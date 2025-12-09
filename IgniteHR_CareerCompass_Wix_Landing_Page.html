@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite HR + Career Compass - Your Work Should Work for You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2B2B2B;
+            background: #FFFFFF;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #2F6F4E 0%, #C5D5C5 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .countdown {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+        
+        .countdown-title {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 2em;
+        }
+        
+        .time-block {
+            text-align: center;
+        }
+        
+        .time-number {
+            display: block;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .time-label {
+            font-size: 0.5em;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        .intro {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            background: #F8F8F6;
+        }
+        
+        .intro h2 {
+            font-size: 2.5em;
+            color: #2F6F4E;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .intro p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #4A4A4A;
+        }
+        
+        .highlight-box {
+            background: #C5D5C5;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 1.1em;
+            color: #2B2B2B;
+        }
+        
+        .services {
+            background: #FFF;
+            padding: 80px 20px;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2F6F4E;
+            margin-bottom: 50px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background: #F8F8F6;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #2F6F4E;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(47,111,78,0.15);
+        }
+        
+        .service-card h3 {
+            color: #2F6F4E;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .service-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .benefits {
+            background: linear-gradient(135deg, #F8F8F6 0%, #E8F5E9 100%);
+            padding: 80px 20px;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2F6F4E;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .benefit-category {
+            margin-bottom: 40px;
+        }
+        
+        .benefit-category h3 {
+            color: #2F6F4E;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C5D5C5;
+        }
+        
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .benefit-item h4 {
+            color: #2F6F4E;
+            margin-bottom: 10px;
+        }
+        
+        .calendar {
+            padding: 80px 20px;
+            background: #FFF;
+        }
+        
+        .calendar h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2F6F4E;
+            margin-bottom: 50px;
+        }
+        
+        .events-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .event {
+            background: #F8F8F6;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 80px;
+        }
+        
+        .event-date {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2F6F4E;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-direction: column;
+            font-size: 0.9em;
+        }
+        
+        .event-title {
+            font-size: 1.3em;
+            color: #2F6F4E;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .signup-section {
+            background: linear-gradient(135deg, #2F6F4E 0%, #0D0D55 100%);
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .signup-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .signup-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .signup-section p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            background: rgba(255,255,255,0.95);
+            color: #2B2B2B;
+        }
+        
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .required {
+            color: #FFD700;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #2F6F4E;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .social-section {
+            background: #2B2B2B;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .social-section h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: #2F6F4E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.5em;
+        }
+        
+        .social-icon:hover {
+            background: #C5D5C5;
+            transform: scale(1.1);
+        }
+        
+        .newsletter {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter input {
+            margin-bottom: 15px;
+        }
+        
+        .waitlist {
+            background: #E8F5E9;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .waitlist h3 {
+            color: #2F6F4E;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .waitlist-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2F6F4E;
+        }
+        
+        .stat-label {
+            color: #666;
+        }
+        
+        .waitlist-btn {
+            background: #2F6F4E;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .waitlist-btn:hover {
+            background: #0D0D55;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .countdown-timer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .waitlist-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Countdown -->
+    <section class="hero">
+        <h1>Ignite HR + Career Compass</h1>
+        <p class="tagline">Your Work Should Work for You</p>
+        
+        <div class="countdown">
+            <div class="countdown-title">Career Compass Launches In</div>
+            <div class="countdown-timer">
+                <div class="time-block">
+                    <span class="time-number">09</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-number">14</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-number">22</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-number">45</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="intro">
+        <h2>Work Feels Different When You're Supported</h2>
+        <p>You know that Sunday night feeling? The one where tomorrow feels heavy before it even starts? Or that moment when you realize your job is affecting your sleep, your relationships, your health?</p>
+        <p>We get it. And more importantly, we know how to change it.</p>
+        
+        <div class="highlight-box">
+            <strong>Career Compass isn't another job board or resume service.</strong> It's career therapy that treats your work life as part of your whole life. Because that promotion won't fix your anxiety. And that perfect job won't matter if you don't believe you deserve it.
+        </div>
+        
+        <p>For employers, we make your existing EAP benefits actually work—increasing utilization from 3% to 40%+. For individuals, we provide the support you need to thrive, not just survive.</p>
+    </section>
+
+    <!-- MVP Services -->
+    <section class="services">
+        <div class="services-container">
+            <h2>How We're Different</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Career Therapy (Not Just Coaching)</h3>
+                    <p>Licensed therapists who understand that work stress is real stress. We address the anxiety, imposter syndrome, and past experiences that show up in your professional life. Insurance billable because mental health is health.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Culture OS™ for Employers</h3>
+                    <p>Real-time culture analytics that predict problems before they happen. See what's really going on in your organization. Intervene before good people leave. Make your EAP investment actually deliver ROI.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Young Adult Specialization</h3>
+                    <p>For the 18-25 crew navigating first jobs, failure-to-launch, ADHD in the workplace, and the reality that nobody taught you how to do this. We bridge the gap between education and employment.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Vocational Wellness Integration</h3>
+                    <p>Your health affects your work. Your work affects your health. We connect the dots with healthcare partners, ensuring your whole self is supported. Coordinated care that actually coordinates.</p>
+                </div>
+                <div class="service-card">
+                    <h3>EAP Enhancement (Not Replacement)</h3>
+                    <p>We partner with your existing EAP to make it work better. No need to switch providers. We're the missing link that gets employees to actually use the benefits you're already paying for.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Crisis Support Resources</h3>
+                    <p>When work problems become life problems—housing instability, healthcare gaps, family challenges—we connect you to real solutions. Our ecosystem of services means you're never just referred somewhere else.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member/Patient Benefits -->
+    <section class="benefits">
+        <h2>Your Benefits</h2>
+        <div class="benefits-container">
+            <div class="benefit-category">
+                <h3>For Individuals</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <h4>24-Hour Therapist Matching</h4>
+                        <p>Get connected to the right support in hours, not weeks</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Insurance Coverage</h4>
+                        <p>Billable to health insurance and employer EAP programs</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Career + Life Integration</h4>
+                        <p>Address work and personal challenges together</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="benefit-category">
+                <h3>For Employers</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <h4>40-70% Utilization Rates</h4>
+                        <p>Your EAP benefits actually get used</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Predictive Analytics</h4>
+                        <p>See problems before they become crises</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>ROI Measurement</h4>
+                        <p>Track real outcomes, not just usage stats</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="benefit-category">
+                <h3>Crisis Support (SDOH Services)</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <h4>Housing Navigation</h4>
+                        <p>When work location changes or housing becomes unstable</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Healthcare Coordination</h4>
+                        <p>Navigate insurance, find providers, manage conditions</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>Financial Planning</h4>
+                        <p>From first paycheck to retirement planning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Calendar -->
+    <section class="calendar">
+        <h2>Upcoming Events & Workshops</h2>
+        <div class="events-timeline">
+            <div class="event">
+                <div class="event-date">DEC<br>3</div>
+                <div class="event-title">Giving Tuesday Launch Event</div>
+                <p>Career Compass official launch with free mini-sessions and employer demos</p>
+            </div>
+            <div class="event">
+                <div class="event-date">DEC<br>10</div>
+                <div class="event-title">Managing Holiday Work Stress</div>
+                <p>Virtual workshop on boundaries, family, and end-of-year pressure</p>
+            </div>
+            <div class="event">
+                <div class="event-date">JAN<br>8</div>
+                <div class="event-title">New Year, New Approach to Work</div>
+                <p>Goal setting that includes mental health and work-life integration</p>
+            </div>
+            <div class="event">
+                <div class="event-date">JAN<br>22</div>
+                <div class="event-title">Employer Workshop: Culture OS Demo</div>
+                <p>See how predictive analytics can transform your workplace culture</p>
+            </div>
+            <div class="event">
+                <div class="event-date">FEB<br>14-16</div>
+                <div class="event-title">Three-Day Career Wellness Intensive</div>
+                <p>Deep dive into career therapy, planning, and breakthrough sessions</p>
+            </div>
+            <div class="event">
+                <div class="event-date">MAR<br>TBD</div>
+                <div class="event-title">Experiential Job Fair</div>
+                <p>Speed networking meets real connection—jobs that fit your life</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="signup-section">
+        <div class="signup-container">
+            <h2>Start Your Journey</h2>
+            <p>Whether you're an individual seeking support or an employer wanting better outcomes, we're ready.</p>
+            
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name <span class="required">*</span></label>
+                        <input type="text" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Last Name <span class="required">*</span></label>
+                        <input type="text" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number <span class="required">*</span></label>
+                    <input type="tel" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Zip Code (Optional)</label>
+                        <input type="text">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>I Am A... (Optional)</label>
+                        <select>
+                            <option value="">Please select...</option>
+                            <option value="individual">Individual Seeking Support</option>
+                            <option value="employer">Employer/HR Professional</option>
+                            <option value="eap">EAP Provider</option>
+                            <option value="healthcare">Healthcare Partner</option>
+                            <option value="other">Other Partnership Opportunity</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Interest Areas (Optional)</label>
+                    <select>
+                        <option value="">What brings you here?</option>
+                        <option value="career-therapy">Individual Career Therapy</option>
+                        <option value="young-adult">Young Adult Support (18-25)</option>
+                        <option value="culture-os">Culture OS for My Company</option>
+                        <option value="eap-enhancement">EAP Enhancement Services</option>
+                        <option value="vocational">Vocational Wellness Program</option>
+                        <option value="job-fair">Experiential Job Fair</option>
+                        <option value="crisis">Crisis Support Services</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter-hr">
+                    <label for="newsletter-hr">Send me the Career Compass newsletter</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="text-hr">
+                    <label for="text-hr">Text me about workshops and events (standard rates apply)</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Begin Your Journey</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+            <a href="#" class="social-icon">💼</a>
+            <a href="#" class="social-icon">📧</a>
+            <a href="#" class="social-icon">📱</a>
+            <a href="#" class="social-icon">🔗</a>
+            <a href="#" class="social-icon">📺</a>
+        </div>
+        
+        <div class="newsletter">
+            <h4 style="color: white; margin-bottom: 20px;">Weekly Workplace Wellness Tips</h4>
+            <input type="email" placeholder="Your email for career insights">
+            <button class="submit-btn" style="background: linear-gradient(135deg, #2F6F4E, #C5D5C5); color: white;">Subscribe</button>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="waitlist">
+        <h3>Join the Movement</h3>
+        <div class="waitlist-stats">
+            <div class="stat">
+                <div class="stat-number">127</div>
+                <div class="stat-label">People on Waitlist</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Companies Interested</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Dec 3</div>
+                <div class="stat-label">Launch Date</div>
+            </div>
+        </div>
+        <p style="font-size: 1.2em; margin: 30px auto; max-width: 600px; color: #666;">
+            Limited spots available for December launch. Career Compass members get priority access to all services, exclusive workshops, and founding member pricing.
+        </p>
+        <button class="waitlist-btn">Reserve Your Spot</button>
+    </section>
+</body>
+</html>
